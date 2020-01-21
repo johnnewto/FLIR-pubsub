@@ -1,0 +1,41 @@
+---
+serial: 19312753
+name: 'FrontLeft'
+encoding: '.jpg'  # either null or '.jpg'
+init:
+    - LineSelector:
+        value: PySpin.LineSelector_Line2
+    - LineMode:
+        value: PySpin.LineMode_Output
+    - V3_3Enable:
+        value: False
+    - AcquisitionFrameRateEnable:
+        value: True
+    - AcquisitionFrameRate:
+        value: 2
+#    - BinningHorizontal:
+#        value: 1
+#    - BinningVertical:
+#        value: 1
+#    - ExposureMode:
+#        value: PySpin.ExposureMode_Timed
+    - ExposureAuto:
+        value: PySpin.ExposureAuto_Continuous
+#    - ExposureTime:
+#        value: 60000
+    - GainSelector:
+        value: PySpin.GainSelector_All
+    - GainAuto:
+        value: PySpin.GainAuto_Off
+    - Gain:
+        value: 6
+    - BlackLevelSelector:
+        value: PySpin.BlackLevelSelector_All
+    - BlackLevel:
+        value: 0
+    - GammaEnable:
+        value: True
+#    - PixelFormat:
+#        value: PySpin.PixelFormat_Mono16
+#    - AdcBitDepth:
+#        value: PySpin.AdcBitDepth_Bit12
