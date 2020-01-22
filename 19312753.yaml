@@ -1,6 +1,6 @@
 ---
 serial: 19312753
-name: 'FrontLeft'
+name: 'FrontRight'
 encoding: '.jpg'  # either null or '.jpg'
 init:
     - LineSelector:
@@ -35,7 +35,4 @@ init:
         value: 0
     - GammaEnable:
         value: True
-#    - PixelFormat:
-#        value: PySpin.PixelFormat_Mono16
-#    - AdcBitDepth:
-#        value: PySpin.AdcBitDepth_Bit12
+

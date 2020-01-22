@@ -17,7 +17,30 @@ def recv_array(socket:zmq.Context.socket, flags=0, copy=True, track=False):
     msg = socket.recv(flags=flags, copy=copy, track=track)
     buf = memoryview(msg)
     A = np.frombuffer(buf, dtype=md['dtype'])
-    return (A.reshape(md['shape']), md)
+    # return (A.reshape(md['shape']), md)
+    return (A, md)
+
+def recv_frame(socket):
+    try:
+        #  Get the reply.
+        topic = socket.recv_string()
+        rec_frame, md1 = recv_array(socket)
+        rec_frame = cv2.imdecode(rec_frame, cv2.IMREAD_GRAYSCALE)
+        rec_frame = cv2.cvtColor(rec_frame, cv2.COLOR_BAYER_BG2BGR)
+        rec_frame = rec_frame.reshape((3000, 4000, 3))
+        # rec_frame = imutils.resize(rec_frame, width=width, height=height)
+        cv2.putText(rec_frame, f'Received frame {md1}',
+                    (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+        fps.update()
+
+    except Exception as e:
+        rec_frame = np.ones((width,height))
+        topic = 'cam1'
+        cv2.putText(rec_frame, f'error:  {e}',
+                    (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
+        print (f"error: message timeout {i},  {e}")
+        time.sleep(1)
+    return topic, rec_frame
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -46,27 +69,7 @@ fps = FPS().start()
 i = 0
 while True:
     i += 1
-    # print( "Sending request ", i,"...")
-    try:
-        # socket.send_string("Hello")
-        #  Get the reply.
-        topic = socket.recv_string()
-        rec_frame, md = recv_array(socket)
-        rec_frame = cv2.imdecode(rec_frame, cv2.IMREAD_GRAYSCALE)
-        rec_frame = cv2.cvtColor(rec_frame, cv2.COLOR_BAYER_BG2BGR)
-        rec_frame = imutils.resize(rec_frame, width=width, height=height)
-        cv2.putText(rec_frame, f'Received frame {md}',
-                    (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-        fps.update()
-        # print(f"frame {md}")
-        # print(datetime.now().timestamp() - md['framedata']['timestamp'])
-    except Exception as e:
-        # socket = reset_my_socket(socket)
-        rec_frame = np.ones((width,height))
-        cv2.putText(rec_frame, f'error:  {e}',
-                    (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
-        print (f"error: message timeout {i},  {e}")
-        time.sleep(1)
+    topic, rec_frame = recv_frame(socket)
 
     try:
         cv2.imshow(topic, rec_frame)
@@ -75,9 +78,7 @@ while True:
            break  # esc to quit
     except KeyboardInterrupt:
         break
-# cam.stop()
-# cam.deinitialize()
-# del cam
+
 fps.stop()
 
 socket.close()
