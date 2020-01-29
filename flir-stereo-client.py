@@ -35,14 +35,19 @@ def recv_frame(socket):
 
     fps.update()
     return topic, rec_frame, md
-    # except Exception as e:
-    #     rec_frame = np.ones((width,height))
-    #     topic = 'cam1'
-    #     cv2.putText(rec_frame, f'error:  {e}',
-    #                 (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
-    #     print (f"error: message {i},  {e}")
-    #     time.sleep(1)
-    # return topic, rec_frame, md
+
+
+def poll_server(name):
+    context = zmq.Context()
+    socket = context.socket(zmq.REQ)
+    socket.connect(f"tcp://{url}:{PORT + 1}")
+    socket.setsockopt(zmq.LINGER, 0)
+    poller = zmq.Poller()
+    poller.register(socket, flags=zmq.POLLIN)
+
+    socket.send_string(f"keep_alive {name}")
+    result = dict(poller.poll(1000))
+    poller.unregister(socket)
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -69,10 +74,10 @@ context = zmq.Context()
 print( "Connecting to server...")
 socket1 = context.socket(zmq.SUB)
 socket1.connect( f"tcp://{url}:{PORT}"  )
-socket1.setsockopt_string(zmq.SUBSCRIBE, f'Cam {name1}')
+socket1.setsockopt_string(zmq.SUBSCRIBE, name1)
 socket2 = context.socket(zmq.SUB)
 socket2.connect( f"tcp://{url}:{PORT}"  )
-socket2.setsockopt_string(zmq.SUBSCRIBE, f'Cam {name2}')
+socket2.setsockopt_string(zmq.SUBSCRIBE, name2)
 
 fps = FPS().start()
 
@@ -87,6 +92,8 @@ stop = False
 while stop == False:
     i += 1
     try:
+        poll_server(name1)
+        poll_server(name2)
         try:
             topic1, rec_frame1, md1 = recv_frame(socket1)
             topic2, rec_frame2, md2 = recv_frame(socket2)
@@ -128,11 +135,3 @@ cv2.destroyAllWindows()
 
 print('Finished')
 print("[INFO] approx. FPS: {:.2f}".format(fps.fps()/2))
-
-
-import skvideo.io
-
-# outputfile = "/tmp/video.mp4"
-# writer = skvideo.io.FFmpegWriter(outputfile, outputdict={'-vcodec': 'libx264'})
-# for frame in frames:
-#     writer.writeFrame(frame)

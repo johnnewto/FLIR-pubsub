@@ -42,6 +42,22 @@ def recv_frame(socket):
         time.sleep(1)
     return topic, rec_frame
 
+
+def poll_server(name):
+    context = zmq.Context()
+    socket = context.socket(zmq.REQ)
+    socket.connect(f"tcp://{url}:{PORT + 1}")
+    socket.setsockopt(zmq.LINGER, 0)
+    poller = zmq.Poller()
+    poller.register(socket, flags=zmq.POLLIN)
+
+    socket.send_string(f"keep_alive {name}")
+    result = dict(poller.poll(1000))
+    poller.unregister(socket)
+
+
+
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("--cam", default=0,
@@ -57,21 +73,24 @@ url = args["url"]
 port = str(PORT + camnum)
 
 context = zmq.Context()
+
+# subscribe socket
 print( "Connecting to server...")
-socket = context.socket(zmq.SUB)
-# socket.connect(f"tcp://localhost:{port})
-socket.connect( f"tcp://{url}:{PORT}"  )
-socket.setsockopt_string(zmq.SUBSCRIBE, f'Cam {name}')
-# socket = reset_my_socket(socket)
+socket_sub = context.socket(zmq.SUB)
+socket_sub.connect( f"tcp://{url}:{PORT}")
+socket_sub.setsockopt_string(zmq.SUBSCRIBE, name)
 
 fps = FPS().start()
 
 i = 0
 while True:
-    i += 1
-    topic, rec_frame = recv_frame(socket)
-
+    poll_server(name)
     try:
+        topic, rec_frame = recv_frame(socket_sub)
+        rec_frame = imutils.resize(rec_frame, width=2400, height=1800)
+        # except:
+        #     topic = ""
+        #     rec_frame = np.zeros((100, 100, 3))
         cv2.imshow(topic, rec_frame)
         k = cv2.waitKey(10)
         if k == 27 or k == 3:
@@ -81,7 +100,8 @@ while True:
 
 fps.stop()
 
-socket.close()
+socket_sub.close()
+
 context.term()
 cv2.destroyAllWindows()
 
