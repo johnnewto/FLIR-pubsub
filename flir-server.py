@@ -4,13 +4,14 @@ import zmq
 import threading
 import cv2
 import imutils
-
+try:
+    import mraa
+    use_mraa = True
+except:
+    use_mraa = False
 
 PORT = 5555
-
 SHOW_CV_WINDOW = False
-
-
 
 class CameraThread:
     def __init__(self, socket_pub, i, yaml_dict):
@@ -98,6 +99,48 @@ class CameraThread:
         multi_pyspin.deinit(self.serial)
         # del cam
 
+class GPIOThread:
+    def __init__(self, pin_no, freq=2.0):
+        self.stopped = True
+        # Export the GPIO pin for use
+        if use_mraa:
+            self.pin = mraa.Gpio(pin_no)
+            self.pin.dir(mraa.DIR_OUT)
+            self.pin.write(0)
+        self.period = 1 / (2 * freq)
+
+    def start(self):
+        """
+        Initialise and set camera thread and begin acquisisition
+        """
+        self.thread = threading.Thread(target=self.update, args=())
+        self.thread.daemon = False
+        self.stopped = False
+        self.thread.start()
+        return self
+
+    def stop(self):
+        """indicate that the thread should be stopped"""
+        self.stopped = True
+        # wait until stream resources are released (producer thread might be still grabbing frame)
+        self.thread.join()
+
+    def update(self):
+        # Loop
+        while True:
+            if use_mraa:
+                self.pin.write(1)
+            else:
+                print('1', end='')
+            time.sleep(self.period)
+            if use_mraa:
+                self.pin.write(0)
+            else:
+                print('0')
+            time.sleep(self.period)
+            if self.stopped:
+                break
+
 
 # This main
 def main():
@@ -125,7 +168,9 @@ def main():
         ct = CameraThread(socket_pub, i, yaml_dict)
         ct.start()
         pub_threads.append(ct)
-    count = 0
+
+    gpio1 = GPIOThread(29, 2.0).start()
+    gpio2 = GPIOThread(31, 10.0).start()
     while True:
         try:
             message = socket_rep.recv().decode("utf-8")
@@ -150,6 +195,8 @@ def main():
         print(f"stopping {ct.name}")
         ct.stop()
 
+    gpio1.stop()
+    gpio2.stop()
     cv2.destroyAllWindows()
     socket_pub.close()
     socket_rep.close()
