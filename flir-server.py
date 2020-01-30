@@ -62,18 +62,18 @@ class CameraThread:
 
             # cam = multi_pyspin._get_cam(serial)
             # image = cam.GetNextImage()
-            image, image_dict = multi_pyspin.get_image(self.serial)
-            img = image.GetNDArray()
-            shape = img.shape
-            if self.encoding is not None:
-                img = cv2.imencode(self.encoding, img)[1]
+            try:
+                image, image_dict = multi_pyspin.get_image(self.serial)
+                img = image.GetNDArray()
+                shape = img.shape
+                if self.encoding is not None:
+                    img = cv2.imencode(self.encoding, img)[1]
 
-            md = {'frameid': i, 'encoding': self.encoding, 'size': img.size, 'shape': shape}
-            # print(f"{topic}, Frame: {md['frameid']}, Framesize {img.shape}") #, end='\r')
-            # print(f'\033[{cam_num+1};0f', end='')
-            # print(f"{self.name}, {md}")  # , end='\r')
+                md = {'frameid': i, 'encoding': self.encoding, 'size': img.size, 'shape': shape}
+                self.send_array( img, framedata=md)
+            except Exception as e:
+                print(str(e))
 
-            self.send_array( img, framedata=md)
 
             if SHOW_CV_WINDOW:
                 if self.encoding is not None:
@@ -132,16 +132,19 @@ def main():
             socket_rep.send_string("OK")
             name = message.split()[1]
             pt = [pt for pt in pub_threads if pt.name == name]
-            assert len(pt) == 1, "Expect one item only"
-            pt[0].last_access = time.time()
-            if pt[0].stopped:
-                pt[0].start()
+            if len(pt) == 1:
+                pt[0].last_access = time.time()
+                if pt[0].stopped:
+                    pt[0].start()
 
         except zmq.error.Again:
             pass
 
         except KeyboardInterrupt:
             break
+
+        except Exception as e:
+            print(str(e))
 
     for ct in pub_threads:
         print(f"stopping {ct.name}")

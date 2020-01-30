@@ -1,6 +1,6 @@
 ---
-serial: 19444715
-name: 'FrontLeft'   # name: 'BottomRight'
+serial: 19444712
+name: 'FrontRight'   # name: 'BottomRight'
 encoding: '.jpg'  # either null or '.jpg'
 init:
     - UserSetSelector:
