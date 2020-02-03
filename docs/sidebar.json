@@ -1,7 +1,7 @@
 {
   "FLIR_pubsub": {
     "Overview": "/",
-    "module name here": "/core",
+    "Setting up an UPboard": "/UPBoard_setup",
     "Multi PySpin Camera Utilities": "/multi_pyspin",
     "Flir Camera Server": "/FLIR_server_utils",
     "Flir Camera Client": "/FLIR_client_utils"

@@ -5,7 +5,7 @@ title: Boxfish-FLIR-Cameras
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "This project allows the reomote running of camera over an ethernet connection. "
+summary: "This project allows the remote running of camera over an ethernet connection. It uses the pyZMQ "
 ---
 <!--
 
@@ -24,6 +24,26 @@ summary: "This project allows the reomote running of camera over an ethernet con
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install">Install<a class="anchor-link" href="#Install">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Under Ubuntu you can symlink or copy the  <code>boxfish_flir_cam</code> directory to the project.
+Then create a server and client as described in the</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example-of-a-Multiple-Camera-Server">Example of a Multiple Camera Server<a class="anchor-link" href="#Example-of-a-Multiple-Camera-Server">&#182;</a></h3>
 </div>
 </div>
@@ -33,7 +53,7 @@ summary: "This project allows the reomote running of camera over an ethernet con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">boxfish_flir_cam</span> <span class="kn">import</span> <span class="n">FLIR_server_utils</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">FLIR_pubsub</span> <span class="kn">import</span> <span class="n">FLIR_server_utils</span>
 <span class="n">FLIR_server_utils</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>  
 
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -50,26 +70,30 @@ summary: "This project allows the reomote running of camera over an ethernet con
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Install">Install<a class="anchor-link" href="#Install">&#182;</a></h2>
+<p>For more details see <a href="https://johnnewto.github.io/FLIR_pubsub/FLIR_server_utils/">FLIR_server_utils</a></p>
+<h3 id="Example-of-a-Camera-Client">Example of a Camera Client<a class="anchor-link" href="#Example-of-a-Camera-Client">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Under Ubuntu you can symlink or copy the  <code>boxfish_flir_cam</code> directory to the project.</p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">FLIR_pubsub</span> <span class="kn">import</span> <span class="n">FLIR_client_utils</span>
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">FLIR_client_utils</span><span class="o">.</span><span class="n">stereo_client</span><span class="p">(</span><span class="n">name1</span><span class="o">=</span><span class="s1">&#39;FrontLeft&#39;</span><span class="p">,</span> <span class="n">name2</span><span class="o">=</span><span class="s1">&#39;FrontRight&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">video</span><span class="o">=</span><span class="s1">&#39;video.avi&#39;</span><span class="p">,</span> <span class="n">vcodec</span><span class="o">=</span><span class="s1">&#39;mjpeg&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Fill me in please! Don't forget code examples:</p>
+<p>For more details see <a href="https://johnnewto.github.io/FLIR_pubsub/FLIR_client_utils/">FLIR_client_utils</a></p>
 
 </div>
 </div>

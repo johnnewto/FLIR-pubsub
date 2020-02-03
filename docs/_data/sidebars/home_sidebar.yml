@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
-      url: /core
+      title: Setting up an UPboard
+      url: /UPBoard_setup
     - output: web,pdf
       title: Multi PySpin Camera Utilities
       url: /multi_pyspin

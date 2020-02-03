@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/home/rov/.virtualenvs/flir/bin/python -u flir-server.py
-WorkingDirectory=/home/rov/git/FLIR-pubsub
+WorkingDirectory=/home/rov/git/FLIR-pubsub/run
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
