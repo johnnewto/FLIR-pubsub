@@ -5,7 +5,7 @@ __all__ = ['CameraThread', 'GPIOThread', 'register', 'server', 'PORT', 'SHOW_CV_
 # Cell
 
 # from  boxfish_stereo_cam.multipyspin import *
-import boxfish_flir_cam.multi_pyspin as multi_pyspin
+import FLIR_pubsub.multi_pyspin as multi_pyspin
 
 import time
 import zmq

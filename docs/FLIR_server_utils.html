@@ -37,7 +37,7 @@ summary: "Utilities for running a multi camera server"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h3 id="CameraThread" class="doc_header"><code>class</code> <code>CameraThread</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L27" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>CameraThread</code>(<strong><code>socket_pub</code></strong>, <strong><code>i</code></strong>, <strong><code>yaml_dict</code></strong>)</p>
+<h3 id="CameraThread" class="doc_header"><code>class</code> <code>CameraThread</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L27" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>CameraThread</code>(<strong><code>socket_pub</code></strong>, <strong><code>i</code></strong>, <strong><code>yaml_dict</code></strong>)</p>
 </blockquote>
 <p>Each camera is controlled by a separate thread, allowing it to be started stopped.
 When started the update loop will wait for a cammera image and send it the  array data through a zmq socket.</p>
@@ -59,7 +59,7 @@ When started the update loop will wait for a cammera image and send it the  arra
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="CameraThread.start" class="doc_header"><code>CameraThread.start</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.start</code>()</p>
+<h4 id="CameraThread.start" class="doc_header"><code>CameraThread.start</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.start</code>()</p>
 </blockquote>
 <p>Initialise and set camera thread and begin acquisition</p>
 
@@ -71,7 +71,7 @@ When started the update loop will wait for a cammera image and send it the  arra
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="CameraThread.stop" class="doc_header"><code>CameraThread.stop</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L63" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.stop</code>()</p>
+<h4 id="CameraThread.stop" class="doc_header"><code>CameraThread.stop</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L63" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.stop</code>()</p>
 </blockquote>
 <p>indicate that the thread should be stopped</p>
 
@@ -95,7 +95,7 @@ When started the update loop will wait for a cammera image and send it the  arra
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h3 id="GPIOThread" class="doc_header"><code>class</code> <code>GPIOThread</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L118" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>GPIOThread</code>(<strong><code>pin_no</code></strong>, <strong><code>freq</code></strong>=<em><code>2.0</code></em>)</p>
+<h3 id="GPIOThread" class="doc_header"><code>class</code> <code>GPIOThread</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L118" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>GPIOThread</code>(<strong><code>pin_no</code></strong>, <strong><code>freq</code></strong>=<em><code>2.0</code></em>)</p>
 </blockquote>
 <p>A thread class to control and toggle Upboard GPIO pins, allowing it to be started &amp; stopped.
 Pin number and frequncy can be set</p>
@@ -117,7 +117,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="GPIOThread.start" class="doc_header"><code>GPIOThread.start</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L132" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.start</code>()</p>
+<h4 id="GPIOThread.start" class="doc_header"><code>GPIOThread.start</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L132" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.start</code>()</p>
 </blockquote>
 <p>Start the pin toggle</p>
 
@@ -129,7 +129,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="GPIOThread.stop" class="doc_header"><code>GPIOThread.stop</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L140" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.stop</code>()</p>
+<h4 id="GPIOThread.stop" class="doc_header"><code>GPIOThread.stop</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L140" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.stop</code>()</p>
 </blockquote>
 <p>Stop the pin toggle</p>
 
@@ -153,7 +153,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="register" class="doc_header"><code>register</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>register</code>()</p>
+<h4 id="register" class="doc_header"><code>register</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>register</code>()</p>
 </blockquote>
 <p>Run multi_pyspin constructor and register multi_pyspin destructor. Should be called once when first imported</p>
 
@@ -174,7 +174,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="server" class="doc_header"><code>server</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_server_utils.py#L170" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>server</code>(<strong><code>yaml_dir</code></strong>)</p>
+<h4 id="server" class="doc_header"><code>server</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L170" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>server</code>(<strong><code>yaml_dir</code></strong>)</p>
 </blockquote>
 <p>Main loop for the server. Polls and sets up the cameras. Sets up the socket and port numbers and starts threads.</p>
 
@@ -197,7 +197,7 @@ Pin number and frequncy can be set</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">boxfish_flir_cam</span> <span class="kn">import</span> <span class="n">FLIR_server_utils</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">FLIR_pubsub</span> <span class="kn">import</span> <span class="n">FLIR_server_utils</span>
 <span class="n">FLIR_server_utils</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>  
 
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -219,7 +219,7 @@ Pin number and frequncy can be set</p>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>19444712 - connected
 19444715 - connected
-/home/john/github/FLIR-pubsub/nbs/common/19444712.yaml
+/home/john/github/FLIR_pubsub/nbs/common/19444712.yaml
 19444712 - setting up...
 19444712 - executing: &#34;UserSetSelector.SetValue(PySpin.UserSetDefault_Default)&#34;
 19444712 - executing: &#34;UserSetLoad.Execute()&#34;
@@ -235,7 +235,7 @@ Pin number and frequncy can be set</p>
 19444712 - executing: &#34;BlackLevelSelector.SetValue(PySpin.BlackLevelSelector_All)&#34;
 19444712 - executing: &#34;BlackLevel.SetValue(0)&#34;
 19444712 - executing: &#34;GammaEnable.SetValue(True)&#34;
-/home/john/github/FLIR-pubsub/nbs/common/19444715.yaml
+/home/john/github/FLIR_pubsub/nbs/common/19444715.yaml
 19444715 - setting up...
 19444715 - executing: &#34;UserSetSelector.SetValue(PySpin.UserSetDefault_Default)&#34;
 19444715 - executing: &#34;UserSetLoad.Execute()&#34;
@@ -251,6 +251,11 @@ Pin number and frequncy can be set</p>
 19444715 - executing: &#34;BlackLevelSelector.SetValue(PySpin.BlackLevelSelector_All)&#34;
 19444715 - executing: &#34;BlackLevel.SetValue(0)&#34;
 19444715 - executing: &#34;GammaEnable.SetValue(True)&#34;
+Starting : FrontRight
+Starting : FrontLeft
+Spinnaker: The current pixel format is not supported. Please convert the image to a supported format. [-1003]
+Stopping FrontRight due to inactivity.
+Stopping FrontLeft due to inactivity.
 Starting : FrontLeft
 Starting : FrontRight
 stopping FrontRight
@@ -316,7 +321,7 @@ The init section contains the FLIR camera initialisation settings and follows py
 </pre></div>
 <h2 id="Service-Installation">Service Installation<a class="anchor-link" href="#Service-Installation">&#182;</a></h2><p>The server python file <strong>FLIR-server.py</strong>  polls all available cameras and configures them against the yaml file.</p>
 
-<pre><code>from boxfish_flir_cam import FLIR_server_utils
+<pre><code>from FLIR_pubsub import FLIR_server_utils
 FLIR_server_utils.register()  
 
 from pathlib import Path

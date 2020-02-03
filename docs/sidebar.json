@@ -1,5 +1,5 @@
 {
-  "boxfish_flir_cam": {
+  "FLIR_pubsub": {
     "Overview": "/",
     "module name here": "/core",
     "Multi PySpin Camera Utilities": "/multi_pyspin",

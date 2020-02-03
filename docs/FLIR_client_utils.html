@@ -34,7 +34,7 @@ summary: "Utilities for running a multi camera client"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="client" class="doc_header"><code>client</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_client_utils.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>client</code>(<strong><code>name</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>)</p>
+<h4 id="client" class="doc_header"><code>client</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>client</code>(<strong><code>name</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>)</p>
 </blockquote>
 <p>Received frames from a single camera. Must have the server running</p>
 
@@ -55,7 +55,7 @@ summary: "Utilities for running a multi camera client"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="stereo_client" class="doc_header"><code>stereo_client</code><a href="https://github.com/johnnewto/boxfish_flir_cam/tree/master/boxfish_flir_cam/FLIR_client_utils.py#L110" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>stereo_client</code>(<strong><code>name1</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>name2</code></strong>=<em><code>'FrontRight'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>, <strong><code>video</code></strong>=<em><code>'video.avi'</code></em>, <strong><code>vcodec</code></strong>=<em><code>'mjpeg'</code></em>)</p>
+<h4 id="stereo_client" class="doc_header"><code>stereo_client</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L110" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>stereo_client</code>(<strong><code>name1</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>name2</code></strong>=<em><code>'FrontRight'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>, <strong><code>video</code></strong>=<em><code>'video.avi'</code></em>, <strong><code>vcodec</code></strong>=<em><code>'mjpeg'</code></em>)</p>
 </blockquote>
 <p>Received frames from two cameras. Must have the server running</p>
 
@@ -79,7 +79,7 @@ summary: "Utilities for running a multi camera client"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">boxfish_flir_cam</span> <span class="kn">import</span> <span class="n">FLIR_client_utils</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">FLIR_pubsub</span> <span class="kn">import</span> <span class="n">FLIR_client_utils</span>
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
     <span class="n">FLIR_client_utils</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FrontLeft&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
@@ -98,7 +98,7 @@ summary: "Utilities for running a multi camera client"
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Connecting to server...
 Finished
-[INFO] approx. FPS: 1.67
+[INFO] approx. FPS: 2.78
 </pre>
 </div>
 </div>
@@ -119,7 +119,7 @@ Finished
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">boxfish_flir_cam</span> <span class="kn">import</span> <span class="n">FLIR_client_utils</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span>  <span class="nn">FLIR_pubsub</span> <span class="kn">import</span> <span class="n">FLIR_client_utils</span>
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
     <span class="n">FLIR_client_utils</span><span class="o">.</span><span class="n">stereo_client</span><span class="p">(</span><span class="n">name1</span><span class="o">=</span><span class="s1">&#39;FrontLeft&#39;</span><span class="p">,</span> <span class="n">name2</span><span class="o">=</span><span class="s1">&#39;FrontRight&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">video</span><span class="o">=</span><span class="s1">&#39;video.avi&#39;</span><span class="p">,</span> <span class="n">vcodec</span><span class="o">=</span><span class="s1">&#39;mjpeg&#39;</span><span class="p">)</span>
@@ -136,20 +136,19 @@ Finished
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Connecting to server...
-Writing Frame pair 29, 29
-Writing Frame pair 30, 30
-Writing Frame pair 31, 31
-Writing Frame pair 32, 32
-Writing Frame pair 33, 33
-Writing Frame pair 34, 34
-Writing Frame pair 35, 35
-Writing Frame pair 36, 36
-Writing Frame pair 37, 37
-Writing Frame pair 38, 38
-Writing Frame pair 39, 39
-Writing Frame pair 40, 40
+Writing Frame pair 16, 1
+Writing Frame pair 17, 2
+Writing Frame pair 18, 3
+Writing Frame pair 19, 4
+Writing Frame pair 20, 5
+Writing Frame pair 21, 6
+Writing Frame pair 22, 7
+Writing Frame pair 23, 8
+Writing Frame pair 24, 9
+Writing Frame pair 25, 10
+Writing Frame pair 26, 11
 Finished
-[INFO] approx. FPS: 1.72
+[INFO] approx. FPS: 0.94
 </pre>
 </div>
 </div>

@@ -22,6 +22,6 @@ entries:
       title: Flir Camera Client
       url: /FLIR_client_utils
     output: web
-    title: boxfish_flir_cam
+    title: FLIR_pubsub
   output: web
   title: Sidebar

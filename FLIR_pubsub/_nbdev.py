@@ -33,8 +33,8 @@ modules = ["multi_pyspin.py",
            "FLIR_server_utils.py",
            "FLIR_client_utils.py"]
 
-doc_url = "https://johnnewto.github.io/boxfish_flir_cam/"
+doc_url = "https://johnnewto.github.io/FLIR_pubsub/"
 
-git_url = "https://github.com/johnnewto/boxfish_flir_cam/tree/master/"
+git_url = "https://github.com/johnnewto/FLIR_pubsub/tree/master/"
 
 def custom_doc_links(name): return None
