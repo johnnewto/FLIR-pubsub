@@ -2,10 +2,18 @@
 > This project allows the remote running of camera over an ethernet connection. It uses the pyZMQ 
 
 
-## Install
+## Installation
 
-Under Ubuntu you can symlink or copy the  `boxfish_flir_cam` directory to the project.
-Then create a server and client as described in the 
+Clone or download the project from https://github.com/johnnewto/FLIR_pubsub  
+
+If running a server then you will need to follow details in 
+[UPBoard_setup](https://johnnewto.github.io/FLIR_pubsub/UPBoard_setup/)  and 
+[FLIR_server_utils](https://johnnewto.github.io/FLIR_pubsub/FLIR_server_utils/)  
+
+If running a client then you only need to copy or symlink the `FLIR_pubsub/FLIR_pubsub` directory as a local directory
+Examples of clients are shown in `FLIR_pubsub/run`  
+More details are described in 
+[FLIR_client_utils](https://johnnewto.github.io/FLIR_pubsub/FLIR_client_utils/)
 
 ## How to use
 

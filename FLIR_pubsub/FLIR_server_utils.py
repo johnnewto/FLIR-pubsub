@@ -27,7 +27,7 @@ except:
 class CameraThread:
     '''
     Each camera is controlled by a separate thread, allowing it to be started stopped.
-    When started the update loop will wait for a cammera image and send it the  array data through a zmq socket.
+    When started the update loop will wait for a camera image and send it the  array data through a zmq socket.
     '''
     def __init__(self, socket_pub, i, yaml_dict):
         self.stopped = True
@@ -118,7 +118,7 @@ class CameraThread:
 class GPIOThread:
     '''
     A thread class to control and toggle Upboard GPIO pins, allowing it to be started & stopped.
-    Pin number and frequncy can be set
+    Pin number and frequency can be set
     '''
     def __init__(self, pin_no, freq=2.0):
         self.stopped = True
