@@ -270,6 +270,13 @@ stopping FrontLeft
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Commands">Commands<a class="anchor-link" href="#Commands">&#182;</a></h3><p>To quit a terminal session press <code>CNTR+C</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Camera-yaml-files">Camera yaml files<a class="anchor-link" href="#Camera-yaml-files">&#182;</a></h3><p>The server polls all installed cameras and trys to match them with corresponding yaml files
 Each camera should have a yaml file with the serial number as its file name
 The first 3 entries determine serial number and camera name identifiers, and the link encoding of jpeg or not.<br>
@@ -340,7 +347,7 @@ pip install zmq</code></pre>
 <p>The server <strong>FLIR-server.py</strong> is typically run as a service <strong>flir-server.service</strong>.<br>
 To install the service<br>
 <code>sudo cp flir-server.service /etc/systemd/system/flir-server.service</code></p>
-<p>The service can be started and stopped with the following bash commands</p>
+<h3 id="Service-Control">Service Control<a class="anchor-link" href="#Service-Control">&#182;</a></h3><p>The service can be started and stopped with the following bash commands</p>
 <p><code>sudo systemctl start flir-server.service</code><br>
 <code>sudo systemctl stop flir-server.service</code></p>
 <p>To ensure it runs on boot enable the service</p>
