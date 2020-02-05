@@ -1,6 +1,8 @@
 {
   "FLIR_pubsub": {
     "Overview": "/",
+    "General Camera Calibration": "/camera_calibration",
+    "Misc Routines": "/misc_routines",
     "Setting up an UPboard": "/UPBoard_setup",
     "Multi PySpin Camera Utilities": "/multi_pyspin",
     "Flir Camera Server": "/FLIR_server_utils",

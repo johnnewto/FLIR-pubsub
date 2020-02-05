@@ -10,6 +10,12 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: General Camera Calibration
+      url: /camera_calibration
+    - output: web,pdf
+      title: Misc Routines
+      url: /misc_routines
+    - output: web,pdf
       title: Setting up an UPboard
       url: /UPBoard_setup
     - output: web,pdf

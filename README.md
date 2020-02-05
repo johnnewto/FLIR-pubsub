@@ -44,3 +44,6 @@ if __name__== "__main__":
 
 For more details see [FLIR_client_utils](https://johnnewto.github.io/FLIR_pubsub/FLIR_client_utils/)
 
+### Installing Jupyter Notebook
+
+`pip install notebook`
