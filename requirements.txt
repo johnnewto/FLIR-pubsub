@@ -1,0 +1,10 @@
+imutils==0.5.3
+numpy==1.18.1
+opencv-contrib-python==4.2.0.32
+Pillow==7.0.0
+PyYAML==5.3
+pyzmq==18.1.1
+scikit-video==1.1.11
+scipy==1.4.1
+zmq==0.0.0
+https://github.com/johnnewto/FLIR_pubsub/raw/master/run/spinnaker_python-1.27.0.48-cp36-cp36m-linux_x86_64.whl; sys_platform == "linux"

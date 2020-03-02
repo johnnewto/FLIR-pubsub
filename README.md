@@ -1,6 +1,18 @@
-# Boxfish-FLIR-Cameras
-> This project allows the remote running of camera over an ethernet connection. It uses the pyZMQ 
+# Boxfish FLIR Cameras Library
+> This project allows the remote running of camera over an ethernet connection
 
+
+### Description
+It uses the pyZMQ to allow the remote running of camera over an ethernet connection using the 
+[Publish/Subscribe](https://learning-0mq-with-pyzmq.readthedocs.io/en/latest/pyzmq/patterns/pubsub.html) 
+messaging pattern. This has proved to be more efficient in bandwidth over the `Request/Reply pattern`.  
+There are server and client examples including an example of how stereo camera pairs can be configured and synchronised recordings made.
+
+### Documentation
+This library and documentation had been generated with __fastai nbdev__  
+nbdev is a library that allows you to fully develop a library in Jupyter Notebooks, putting all your code, 
+tests and documentation in one place.  
+https://nbdev.fast.ai/
 
 ## Installation
 
@@ -14,6 +26,9 @@ If running a client then you only need to copy or symlink the `FLIR_pubsub/FLIR_
 Examples of clients are shown in `FLIR_pubsub/run`  
 More details are described in 
 [FLIR_client_utils](https://johnnewto.github.io/FLIR_pubsub/FLIR_client_utils/)
+
+Normally it is best to setup a virtual environment, call it flir, and install the requirements with   
+`pip install -r requirements.txt`
 
 ## How to use
 

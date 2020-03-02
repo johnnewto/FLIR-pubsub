@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: General Camera Calibration
-      url: /camera_calibration
+      url: /camera_calibration_tutorial
     - output: web,pdf
       title: Misc Routines
       url: /misc_routines
@@ -27,6 +27,12 @@ entries:
     - output: web,pdf
       title: Flir Camera Client
       url: /FLIR_client_utils
+    - output: web,pdf
+      title: Title
+      url: /test2
+    - output: web,pdf
+      title: FLIR Camera Calibration
+      url: /camera_calibration_utils
     output: web
     title: FLIR_pubsub
   output: web

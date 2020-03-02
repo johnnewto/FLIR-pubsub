@@ -34,9 +34,9 @@ summary: "Utilities for running a multi camera client"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="client" class="doc_header"><code>client</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>client</code>(<strong><code>name</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>)</p>
+<h4 id="recv_array" class="doc_header"><code>recv_array</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>recv_array</code>(<strong><code>socket</code></strong>:<code>socket</code>, <strong><code>flags</code></strong>=<em><code>0</code></em>, <strong><code>copy</code></strong>=<em><code>True</code></em>, <strong><code>track</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
-<p>Received frames from a single camera. Must have the server running</p>
+<p>recv a numpy array</p>
 
 </div>
 
@@ -55,22 +55,150 @@ summary: "Utilities for running a multi camera client"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="stereo_client" class="doc_header"><code>stereo_client</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L110" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>stereo_client</code>(<strong><code>name1</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>name2</code></strong>=<em><code>'FrontRight'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>, <strong><code>video</code></strong>=<em><code>'video.avi'</code></em>, <strong><code>vcodec</code></strong>=<em><code>'mjpeg'</code></em>)</p>
+<h4 id="recv_frame" class="doc_header"><code>recv_frame</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>recv_frame</code>(<strong><code>socket</code></strong>, <strong><code>fps</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
-<p>Received frames from two cameras. Must have the server running</p>
+<p>Receive and process an image from camera</p>
 
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="poll_server" class="doc_header"><code>poll_server</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>poll_server</code>(<strong><code>url</code></strong>, <strong><code>name</code></strong>)</p>
+</blockquote>
+<p>poll the server periodically to keep it sending frames,
+if you stop polling the server will timeout to save bandwidth and server CPU</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="client" class="doc_header"><code>client</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_client_utils.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>client</code>(<strong><code>name</code></strong>=<em><code>'FrontLeft'</code></em>, <strong><code>url</code></strong>=<em><code>'localhost'</code></em>)</p>
+</blockquote>
+<p>Received frames from a single camera. Must have the server running</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">stereo_client</span><span class="p">(</span><span class="n">name1</span><span class="o">=</span><span class="s1">&#39;FrontLeft&#39;</span><span class="p">,</span> <span class="n">name2</span><span class="o">=</span><span class="s1">&#39;FrontRight&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">video</span><span class="o">=</span><span class="s1">&#39;video.avi&#39;</span><span class="p">,</span> <span class="n">vcodec</span><span class="o">=</span><span class="s1">&#39;mjpeg&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Received frames from two cameras. Must have the server running&quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;Connecting to server...&quot;</span><span class="p">)</span>
+    <span class="n">socket1</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUB</span><span class="p">)</span>
+    <span class="n">socket1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;tcp://</span><span class="si">{url}</span><span class="s2">:</span><span class="si">{PORT}</span><span class="s2">&quot;</span>  <span class="p">)</span>
+    <span class="n">socket1</span><span class="o">.</span><span class="n">setsockopt_string</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUBSCRIBE</span><span class="p">,</span> <span class="n">name1</span><span class="p">)</span>
+    <span class="n">socket2</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUB</span><span class="p">)</span>
+    <span class="n">socket2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;tcp://</span><span class="si">{url}</span><span class="s2">:</span><span class="si">{PORT}</span><span class="s2">&quot;</span>  <span class="p">)</span>
+    <span class="n">socket2</span><span class="o">.</span><span class="n">setsockopt_string</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUBSCRIBE</span><span class="p">,</span> <span class="n">name2</span><span class="p">)</span>
+
+    <span class="n">fps</span> <span class="o">=</span> <span class="n">FPS</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">skvideo</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FFmpegWriter</span><span class="p">(</span><span class="n">video</span><span class="p">,</span> <span class="n">outputdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;-vcodec&#39;</span><span class="p">:</span> <span class="s1">&#39;mjpeg&#39;</span><span class="p">})</span>
+    <span class="c1"># writer = skvideo.io.FFmpegWriter(outputfile, outputdict={&#39;-vcodec&#39;: &#39;libx264&#39;, &#39;-b&#39;: &#39;30000000&#39;, &#39;-r&#39;: &quot;2&quot;})</span>
+
+    <span class="n">SHOW_CV_WINDOW</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">stop</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">while</span> <span class="n">stop</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">poll_server</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name1</span><span class="p">)</span>
+            <span class="n">poll_server</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name2</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">topic1</span><span class="p">,</span> <span class="n">rec_frame1</span><span class="p">,</span> <span class="n">md1</span> <span class="o">=</span> <span class="n">recv_frame</span><span class="p">(</span><span class="n">socket1</span><span class="p">,</span> <span class="n">fps</span><span class="p">)</span>
+                <span class="n">topic2</span><span class="p">,</span> <span class="n">rec_frame2</span><span class="p">,</span> <span class="n">md2</span> <span class="o">=</span> <span class="n">recv_frame</span><span class="p">(</span><span class="n">socket2</span><span class="p">,</span> <span class="n">fps</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Video error:  </span><span class="si">{e}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">rec_frame1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{md1[&#39;framedata&#39;][&#39;frameid&#39;]}</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">rec_frame2</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{md2[&#39;framedata&#39;][&#39;frameid&#39;]}</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+
+                <span class="n">s_frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">rec_frame1</span><span class="p">,</span> <span class="n">rec_frame2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writeFrame</span><span class="p">(</span><span class="n">s_frame</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing Frame pair </span><span class="si">{md1[&#39;framedata&#39;][&#39;frameid&#39;]}</span><span class="s2">, </span><span class="si">{md2[&#39;framedata&#39;][&#39;frameid&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">SHOW_CV_WINDOW</span><span class="p">:</span>
+                    <span class="n">rec_frame1</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">rec_frame1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+                    <span class="n">rec_frame2</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">rec_frame2</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+                    <span class="c1"># cv2.putText(rec_frame1, f&quot;{md2[&#39;framedata&#39;][&#39;frameid&#39;]}&quot;,</span>
+                    <span class="c1">#             (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)</span>
+                    <span class="c1"># cv2.putText(rec_frame2, f&quot;{md2[&#39;framedata&#39;][&#39;frameid&#39;]}&quot;,</span>
+                    <span class="c1">#             (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)</span>
+
+                    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">topic1</span><span class="p">,</span> <span class="n">rec_frame1</span><span class="p">)</span>
+                    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">topic2</span><span class="p">,</span> <span class="n">rec_frame2</span><span class="p">)</span>
+                    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                       <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping&quot;</span><span class="p">)</span>
+
+    <span class="n">fps</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">socket1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">socket2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">term</span><span class="p">()</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Finished&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO] approx. FPS: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fps</span><span class="o">.</span><span class="n">fps</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><p>Clone or download the project from <a href="https://github.com/johnnewto/FLIR_pubsub">https://github.com/johnnewto/FLIR_pubsub</a><br>
-If running a client then you only need to copy or symlink the <code>FLIR_pubsub/FLIR_pubsub</code> directory as a local directory
+<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><p>Clone or download the project from <a href="https://github.com/johnnewto/FLIR_pubsub">https://github.com/johnnewto/FLIR_pubsub</a></p>
+<p>Normally it is best to setup a virtual environment, call it flir, and install the requirements with<br>
+<code>pip install -r requirements.txt</code>
+For the client you won't necessarily need the wheel file</p>
+<p>If running a client then you only need to copy or symlink the <code>FLIR_pubsub/FLIR_pubsub</code> directory as a local directory
 Examples of clients are shown in <code>FLIR_pubsub/run</code></p>
 
 </div>
@@ -107,7 +235,7 @@ Examples of clients are shown in <code>FLIR_pubsub/run</code></p>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Connecting to server...
 Finished
-[INFO] approx. FPS: 2.78
+[INFO] approx. FPS: 12.40
 </pre>
 </div>
 </div>
@@ -138,39 +266,14 @@ Finished
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Connecting to server...
-Writing Frame pair 16, 1
-Writing Frame pair 17, 2
-Writing Frame pair 18, 3
-Writing Frame pair 19, 4
-Writing Frame pair 20, 5
-Writing Frame pair 21, 6
-Writing Frame pair 22, 7
-Writing Frame pair 23, 8
-Writing Frame pair 24, 9
-Writing Frame pair 25, 10
-Writing Frame pair 26, 11
-Finished
-[INFO] approx. FPS: 0.94
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Commands">Commands<a class="anchor-link" href="#Commands">&#182;</a></h3><p>To quit a terminal session press <code>CNTR+C</code><br>
 The client seesion will display one or two openCV image windows. These can be quit by pressing <code>ESC</code> within the window.<br>
 Mouse right click will also bring up a context menu allowing zooming panning and image saving.</p>
+<p>flir-client.py can also save files in jpg format by pressing <code>s</code> within the window.</p>
+<p>The image name saved is the Camera name with a number index appended. Pressing <code>c</code> will reset the number to 0</p>
 
 </div>
 </div>
@@ -179,7 +282,7 @@ Mouse right click will also bring up a context menu allowing zooming panning and
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Codecs-and-Encoders">Codecs and Encoders<a class="anchor-link" href="#Codecs-and-Encoders">&#182;</a></h3><p>for recoding video you can select one of the available ffmpeg encoders. For a list of encoders type<br>
 <code>ffmpeg -encoders</code></p>
-<p>The default client uses <code>mjpeg</code> because this uses less cpu over <code>h264</code> (libx264)</p>
+<p>The default client / server here uses uses <code>mjpeg</code> because this uses less cpu over <code>h264</code> (libx264)</p>
 
 </div>
 </div>

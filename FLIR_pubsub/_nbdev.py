@@ -22,16 +22,20 @@ index = {"setup": "90_multi_pyspin.ipynb",
          "CameraThread": "92_FLIR_server_utils.ipynb",
          "GPIOThread": "92_FLIR_server_utils.ipynb",
          "server": "92_FLIR_server_utils.ipynb",
-         "PORT": "93_FLIR_client_utils.ipynb",
-         "SHOW_CV_WINDOW": "92_FLIR_server_utils.ipynb",
+         "PORT": "94_FLIR_capture.ipynb",
+         "FLIR_Client": "93_FLIR_client_utils.ipynb",
          "client": "93_FLIR_client_utils.ipynb",
-         "stereo_client": "93_FLIR_client_utils.ipynb",
          "width": "93_FLIR_client_utils.ipynb",
-         "height": "93_FLIR_client_utils.ipynb"}
+         "height": "93_FLIR_client_utils.ipynb",
+         "stereo_client": "93_FLIR_client_utils.ipynb",
+         "FlirCapture": "94_FLIR_capture.ipynb",
+         "Capture": "94_camera_calibration_utils.ipynb"}
 
 modules = ["multi_pyspin.py",
            "FLIR_server_utils.py",
-           "FLIR_client_utils.py"]
+           "FLIR_client_utils.py",
+           "FLIR_videocapture.py",
+           "FLIR_camera_calibration_utils.py"]
 
 doc_url = "https://johnnewto.github.io/FLIR_pubsub/"
 

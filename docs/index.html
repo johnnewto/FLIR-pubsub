@@ -1,11 +1,11 @@
 ---
 
-title: Boxfish-FLIR-Cameras
+title: Boxfish FLIR Cameras Library
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "This project allows the remote running of camera over an ethernet connection. It uses the pyZMQ "
+summary: "This project allows the remote running of camera over an ethernet connection"
 ---
 <!--
 
@@ -24,6 +24,26 @@ summary: "This project allows the remote running of camera over an ethernet conn
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Description">Description<a class="anchor-link" href="#Description">&#182;</a></h3><p>It uses the pyZMQ to allow the remote running of camera over an ethernet connection using the 
+<a href="https://learning-0mq-with-pyzmq.readthedocs.io/en/latest/pyzmq/patterns/pubsub.html">Publish/Subscribe</a> 
+messaging pattern. This has proved to be more efficient in bandwidth over the <code>Request/Reply pattern</code>.<br>
+There are server and client examples including an example of how stereo camera pairs can be configured and synchronised recordings made.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Documentation">Documentation<a class="anchor-link" href="#Documentation">&#182;</a></h3><p>This library and documentation had been generated with <strong>fastai nbdev</strong><br>
+nbdev is a library that allows you to fully develop a library in Jupyter Notebooks, putting all your code, 
+tests and documentation in one place.<br>
+<a href="https://nbdev.fast.ai/">https://nbdev.fast.ai/</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2>
 </div>
 </div>
@@ -38,6 +58,8 @@ summary: "This project allows the remote running of camera over an ethernet conn
 Examples of clients are shown in <code>FLIR_pubsub/run</code><br>
 More details are described in 
 <a href="https://johnnewto.github.io/FLIR_pubsub/FLIR_client_utils/">FLIR_client_utils</a></p>
+<p>Normally it is best to setup a virtual environment, call it flir, and install the requirements with<br>
+<code>pip install -r requirements.txt</code></p>
 
 </div>
 </div>

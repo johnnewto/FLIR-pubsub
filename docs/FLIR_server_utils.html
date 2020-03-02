@@ -37,10 +37,10 @@ summary: "Utilities for running a multi camera server"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h3 id="CameraThread" class="doc_header"><code>class</code> <code>CameraThread</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L27" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>CameraThread</code>(<strong><code>socket_pub</code></strong>, <strong><code>i</code></strong>, <strong><code>yaml_dict</code></strong>)</p>
+<h3 id="CameraThread" class="doc_header"><code>class</code> <code>CameraThread</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L24" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>CameraThread</code>(<strong><code>socket_pub</code></strong>, <strong><code>i</code></strong>, <strong><code>yaml_dict</code></strong>, <strong><code>preview</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Each camera is controlled by a separate thread, allowing it to be started stopped.
-When started the update loop will wait for a cammera image and send it the  array data through a zmq socket.</p>
+When started the update loop will wait for a camera image and send it the  array data through a zmq socket.</p>
 
 </div>
 
@@ -59,7 +59,7 @@ When started the update loop will wait for a cammera image and send it the  arra
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="CameraThread.start" class="doc_header"><code>CameraThread.start</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.start</code>()</p>
+<h4 id="CameraThread.start" class="doc_header"><code>CameraThread.start</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L51" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.start</code>()</p>
 </blockquote>
 <p>Initialise and set camera thread and begin acquisition</p>
 
@@ -71,7 +71,7 @@ When started the update loop will wait for a cammera image and send it the  arra
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="CameraThread.stop" class="doc_header"><code>CameraThread.stop</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L63" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.stop</code>()</p>
+<h4 id="CameraThread.stop" class="doc_header"><code>CameraThread.stop</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CameraThread.stop</code>()</p>
 </blockquote>
 <p>indicate that the thread should be stopped</p>
 
@@ -95,10 +95,10 @@ When started the update loop will wait for a cammera image and send it the  arra
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h3 id="GPIOThread" class="doc_header"><code>class</code> <code>GPIOThread</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L118" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>GPIOThread</code>(<strong><code>pin_no</code></strong>, <strong><code>freq</code></strong>=<em><code>2.0</code></em>)</p>
+<h3 id="GPIOThread" class="doc_header"><code>class</code> <code>GPIOThread</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L115" class="source_link" style="float:right">[source]</a></h3><blockquote><p><code>GPIOThread</code>(<strong><code>pin_no</code></strong>, <strong><code>freq</code></strong>=<em><code>2.0</code></em>)</p>
 </blockquote>
 <p>A thread class to control and toggle Upboard GPIO pins, allowing it to be started &amp; stopped.
-Pin number and frequncy can be set</p>
+Pin number and frequency can be set</p>
 
 </div>
 
@@ -117,7 +117,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="GPIOThread.start" class="doc_header"><code>GPIOThread.start</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L132" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.start</code>()</p>
+<h4 id="GPIOThread.start" class="doc_header"><code>GPIOThread.start</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L129" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.start</code>()</p>
 </blockquote>
 <p>Start the pin toggle</p>
 
@@ -129,7 +129,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="GPIOThread.stop" class="doc_header"><code>GPIOThread.stop</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L140" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.stop</code>()</p>
+<h4 id="GPIOThread.stop" class="doc_header"><code>GPIOThread.stop</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L137" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GPIOThread.stop</code>()</p>
 </blockquote>
 <p>Stop the pin toggle</p>
 
@@ -153,7 +153,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="register" class="doc_header"><code>register</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>register</code>()</p>
+<h4 id="register" class="doc_header"><code>register</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L162" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>register</code>()</p>
 </blockquote>
 <p>Run multi_pyspin constructor and register multi_pyspin destructor. Should be called once when first imported</p>
 
@@ -174,7 +174,7 @@ Pin number and frequncy can be set</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="server" class="doc_header"><code>server</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L170" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>server</code>(<strong><code>yaml_dir</code></strong>)</p>
+<h4 id="server" class="doc_header"><code>server</code><a href="https://github.com/johnnewto/FLIR_pubsub/tree/master/FLIR_pubsub/FLIR_server_utils.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>server</code>(<strong><code>yaml_dir</code></strong>)</p>
 </blockquote>
 <p>Main loop for the server. Polls and sets up the cameras. Sets up the socket and port numbers and starts threads.</p>
 
@@ -188,8 +188,12 @@ Pin number and frequncy can be set</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><p>Clone or download the project from <a href="https://github.com/johnnewto/FLIR_pubsub">https://github.com/johnnewto/FLIR_pubsub</a><br>
-If running a client then you only need to copy or symlink the <code>FLIR_pubsub/FLIR_pubsub</code> directory as a local directory
+<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><p>Clone or download the project from <a href="https://github.com/johnnewto/FLIR_pubsub">https://github.com/johnnewto/FLIR_pubsub</a></p>
+<p>Normally it is best to setup a virtual environment, call it flir, and install the requirements with<br>
+<code>pip install -r requirements.txt</code></p>
+<p>for more information on setting up the camera drivers see<br>
+<a href="https://johnnewto.github.io/FLIR_pubsub/UPBoard_setup/#Install-FLIR-camera-Spinaker-&amp;-python-sdk">Install Spinaker &amp; python-sdk</a></p>
+<p>If running a client then you only need to copy or symlink the <code>FLIR_pubsub/FLIR_pubsub</code> directory as a local directory
 Examples of clients are shown in <code>FLIR_pubsub/run</code></p>
 
 </div>
@@ -226,50 +230,50 @@ Examples of clients are shown in <code>FLIR_pubsub/run</code></p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>19444712 - connected
-19444715 - connected
-/home/john/github/FLIR_pubsub/nbs/common/19444712.yaml
-19444712 - setting up...
-19444712 - executing: &#34;UserSetSelector.SetValue(PySpin.UserSetDefault_Default)&#34;
-19444712 - executing: &#34;UserSetLoad.Execute()&#34;
-19444712 - executing: &#34;LineSelector.SetValue(PySpin.LineSelector_Line2)&#34;
-19444712 - executing: &#34;V3_3Enable.SetValue(True)&#34;
-19444712 - executing: &#34;AcquisitionFrameRateEnable.SetValue(False)&#34;
-19444712 - executing: &#34;ExposureMode.SetValue(PySpin.ExposureMode_Timed)&#34;
-19444712 - executing: &#34;ExposureAuto.SetValue(PySpin.ExposureAuto_Off)&#34;
-19444712 - executing: &#34;ExposureTime.SetValue(60000)&#34;
-19444712 - executing: &#34;GainSelector.SetValue(PySpin.GainSelector_All)&#34;
-19444712 - executing: &#34;GainAuto.SetValue(PySpin.GainAuto_Off)&#34;
-19444712 - executing: &#34;Gain.SetValue(6)&#34;
-19444712 - executing: &#34;BlackLevelSelector.SetValue(PySpin.BlackLevelSelector_All)&#34;
-19444712 - executing: &#34;BlackLevel.SetValue(0)&#34;
-19444712 - executing: &#34;GammaEnable.SetValue(True)&#34;
-/home/john/github/FLIR_pubsub/nbs/common/19444715.yaml
-19444715 - setting up...
-19444715 - executing: &#34;UserSetSelector.SetValue(PySpin.UserSetDefault_Default)&#34;
-19444715 - executing: &#34;UserSetLoad.Execute()&#34;
-19444715 - executing: &#34;LineSelector.SetValue(PySpin.LineSelector_Line2)&#34;
-19444715 - executing: &#34;V3_3Enable.SetValue(True)&#34;
-19444715 - executing: &#34;AcquisitionFrameRateEnable.SetValue(False)&#34;
-19444715 - executing: &#34;ExposureMode.SetValue(PySpin.ExposureMode_Timed)&#34;
-19444715 - executing: &#34;ExposureAuto.SetValue(PySpin.ExposureAuto_Off)&#34;
-19444715 - executing: &#34;ExposureTime.SetValue(60000)&#34;
-19444715 - executing: &#34;GainSelector.SetValue(PySpin.GainSelector_All)&#34;
-19444715 - executing: &#34;GainAuto.SetValue(PySpin.GainAuto_Off)&#34;
-19444715 - executing: &#34;Gain.SetValue(6)&#34;
-19444715 - executing: &#34;BlackLevelSelector.SetValue(PySpin.BlackLevelSelector_All)&#34;
-19444715 - executing: &#34;BlackLevel.SetValue(0)&#34;
-19444715 - executing: &#34;GammaEnable.SetValue(True)&#34;
-Starting : FrontRight
-Starting : FrontLeft
-Spinnaker: The current pixel format is not supported. Please convert the image to a supported format. [-1003]
-Stopping FrontRight due to inactivity.
-Stopping FrontLeft due to inactivity.
-Starting : FrontLeft
-Starting : FrontRight
-stopping FrontRight
-stopping FrontLeft
+<pre>19312752 - connected
+/home/john/github/FLIR_pubsub/nbs/common/19312752.yaml
+19312752 - setting up...
+19312752 - executing: &#34;LineSelector.SetValue(PySpin.LineSelector_Line2)&#34;
+19312752 - executing: &#34;LineMode.SetValue(PySpin.LineMode_Output)&#34;
+19312752 - executing: &#34;V3_3Enable.SetValue(False)&#34;
+19312752 - executing: &#34;AcquisitionFrameRateEnable.SetValue(False)&#34;
+19312752 - executing: &#34;BinningHorizontal.SetValue(2)&#34;
+19312752 - executing: &#34;BinningVertical.SetValue(2)&#34;
+19312752 - executing: &#34;ExposureAuto.SetValue(PySpin.ExposureAuto_Continuous)&#34;
+19312752 - executing: &#34;GainSelector.SetValue(PySpin.GainSelector_All)&#34;
+19312752 - executing: &#34;GainAuto.SetValue(PySpin.GainAuto_Off)&#34;
+19312752 - executing: &#34;Gain.SetValue(6)&#34;
+19312752 - executing: &#34;BlackLevelSelector.SetValue(PySpin.BlackLevelSelector_All)&#34;
+19312752 - executing: &#34;BlackLevel.SetValue(0)&#34;
+19312752 - executing: &#34;GammaEnable.SetValue(True)&#34;
 </pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZMQError</span>                                  Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-22-62a4412959d2&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> 
+<span class="ansi-green-intense-fg ansi-bold">      7</span>     yaml_dir<span class="ansi-blue-fg">=</span> Path<span class="ansi-blue-fg">.</span>cwd<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">&#39;common&#39;</span>
+<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg">     </span>FLIR_server_utils<span class="ansi-blue-fg">.</span>server<span class="ansi-blue-fg">(</span>yaml_dir<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      9</span> 
+
+<span class="ansi-green-fg">~/github/FLIR_pubsub/FLIR_pubsub/FLIR_server_utils.py</span> in <span class="ansi-cyan-fg">server</span><span class="ansi-blue-fg">(yaml_dir)</span>
+<span class="ansi-green-intense-fg ansi-bold">    193</span>     socket_pub<span class="ansi-blue-fg">.</span>setsockopt<span class="ansi-blue-fg">(</span>zmq<span class="ansi-blue-fg">.</span>LINGER<span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    194</span>     <span class="ansi-red-fg"># socket_pub.setsockopt(zmq.SO_REUSEADDR, 1)</span>
+<span class="ansi-green-fg">--&gt; 195</span><span class="ansi-red-fg">     </span>socket_pub<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">f&#34;tcp://*:{PORT}&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    196</span> 
+<span class="ansi-green-intense-fg ansi-bold">    197</span>     socket_rep <span class="ansi-blue-fg">=</span> context<span class="ansi-blue-fg">.</span>socket<span class="ansi-blue-fg">(</span>zmq<span class="ansi-blue-fg">.</span>REP<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">zmq/backend/cython/socket.pyx</span> in <span class="ansi-cyan-fg">zmq.backend.cython.socket.Socket.bind</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">~/.virtualenvs/flir/lib/python3.6/site-packages/zmq/backend/cython/checkrc.pxd</span> in <span class="ansi-cyan-fg">zmq.backend.cython.checkrc._check_rc</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">ZMQError</span>: Address already in use</pre>
 </div>
 </div>
 
