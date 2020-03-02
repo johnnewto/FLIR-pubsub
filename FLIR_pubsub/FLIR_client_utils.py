@@ -216,7 +216,6 @@ def stereo_client(name1='FrontLeft', name2='FrontRight', url='localhost', video=
     print("[INFO] Chan1 approx. FPS: {:.2f}".format(chan1.fps.fps()))
     print("[INFO] Chan1 approx. FPS: {:.2f}".format(chan1.fps.fps()))
 
-
 # Cell
 #export
 if __name__ == '__main__':
