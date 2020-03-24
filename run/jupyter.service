@@ -1,10 +1,11 @@
 [Unit]
-Description=FLIR-camera server service
+Description=Jupyter Notebook
 AssertPathExists=/home/rov/.virtualenvs/flir
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /home/rov/git/FLIR-pubsub/run/start-flir-server-service.sh
+PIDFile=/run/jupyter.pid
+ExecStart=/bin/bash /home/rov/git/FLIR-pubsub/run/start-jupyter-service.sh
 WorkingDirectory=/home/rov/
 Restart=always
 RestartSec=10

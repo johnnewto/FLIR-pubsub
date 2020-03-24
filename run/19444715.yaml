@@ -1,0 +1,58 @@
+calibration:
+  cameraMatrix:
+  - - 534.0708862263315
+    - 0.0
+    - 341.534071072641
+  - - 0.0
+    - 534.1191479816041
+    - 232.94565221103124
+  - - 0.0
+    - 0.0
+    - 1.0
+  distCoeffs:
+  - - -0.29297162134387267
+    - 0.10770688662052742
+    - 0.0013103848957712952
+    - -3.11022977300805e-05
+    - 0.043479914225452866
+  newcameramtx:
+  - - 458.6409912109375
+    - 0.0
+    - 343.0915758085175
+  - - 0.0
+    - 457.1946716308594
+    - 233.8337647510707
+  - - 0.0
+    - 0.0
+    - 1.0
+encoding: .jpg
+init:
+- UserSetSelector:
+    value: PySpin.UserSetDefault_Default
+- UserSetLoad: null
+- LineSelector:
+    value: PySpin.LineSelector_Line2
+- V3_3Enable:
+    value: true
+- AcquisitionFrameRateEnable:
+    value: false
+- ExposureMode:
+    value: PySpin.ExposureMode_Timed
+- ExposureAuto:
+    value: PySpin.ExposureAuto_Off
+- ExposureTime:
+    value: 60000
+- GainSelector:
+    value: PySpin.GainSelector_All
+- GainAuto:
+    value: PySpin.GainAuto_Off
+- Gain:
+    value: 6
+- BlackLevelSelector:
+    value: PySpin.BlackLevelSelector_All
+- BlackLevel:
+    value: 0
+- GammaEnable:
+    value: true
+name: FrontLeft
+serial: 19444715

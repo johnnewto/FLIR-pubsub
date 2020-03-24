@@ -37,6 +37,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.graphics import *
 
 from kivy.uix.image import Image
 from kivy.clock import Clock
@@ -81,10 +82,12 @@ class PicturesApp(App):
         # # shared memory
         self.sm_flir = NP_SharedMemory((2000, 3000, 3), name='camera_1')
         self.sm_flir.set_local_np_view()
+        self.sm_fake = NP_SharedMemory((2000, 3000, 3), name='camera_1')
+        self.sm_fake.set_local_np_view()
         # sm2 = NP_SharedMemory((2000, 3000, 3), name='camera_2')
         # sm2.set_local_np_view()
 
-        # self.proc_flir = SpinProcess(target=fake_camera_process, sharemem=self.sm_flir)
+        self.proc_fake = SpinProcess(target=fake_camera_process, sharemem=self.sm_fake)
         self.proc_flir = SpinProcess(target=flir_camera_process, sharemem=self.sm_flir)
         # p2 = Process(target=demo_camera_process, args=(sm2,)).start()
 
@@ -156,6 +159,7 @@ class PicturesApp(App):
                 texture1.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
                 # end2 = timeit.timeit()
 
+                # end2 = timeit.timeit()
                 # display image from the texture
                 if bg is not None:
                    bg.texture = texture1
@@ -167,16 +171,20 @@ class PicturesApp(App):
                                                         size=(frame.shape[1], frame.shape[0]),
                                                         colorfmt='bgr', bufferfmt='ubyte')
 
+            # widget.canvas
+            # with _widgit.children[0].canvas:  todo jn get this going
+            #     Rectangle(texture=_widgit.children[0].texture, pos=_widgit.children[0].pos, size=(64, 64))
 
     def update_kivy(self, dt):
         '''display image from cam in kivy window'''
         self.stream2widget(self.vs1, self.stream_widget_list[0])
         self.i += 1
-        if self.i % 1 == 0:
+        if self.i % 5 == 0:
             # bodge to slow these down
             # self.stream2widget(self.vs2, self.stream_widget_list[1])
             # self.stream2widget(self.vs3, self.stream_widget_list[2])
             # self.stream2widget(self.vs4, self.stream_widget_list[3])
+            self.stream2widget(self.proc_fake, self.stream_widget_list[3])
             self.stream2widget(self.proc_flir, self.stream_widget_list[4])
             pass
 
@@ -187,9 +195,9 @@ class PicturesApp(App):
     def on_stop(self, *args):
         print('!!!! Running on_stop')
         self.proc_flir.release()
+        self.proc_fake.release()
         self.vs1.release()
         self.vs4.release()
-
         return True
 
     def textpopup(self, title='', text=''):

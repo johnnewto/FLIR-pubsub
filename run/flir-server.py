@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # yaml_dir = Path.cwd() / '../nbs/common'
     # # yaml_dir = Path('./nbs/common')
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    yaml_dir = Path(dir_path) / '../nbs/common'
+    yaml_dir = Path(dir_path)
     flir.server(yaml_dir)
 
 # /home/john/github/FLIR_pubsub/nbs/common/19312752.yaml

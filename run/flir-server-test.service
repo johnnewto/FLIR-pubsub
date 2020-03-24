@@ -1,0 +1,13 @@
+[Unit]
+Description=FLIR-camera server service
+After=network.target
+
+[Service]
+ExecStart=/home/john/.virtualenvs/flir/bin/python -u run/flir-server.py
+WorkingDirectory=/home/john/git/FLIR-pubsub
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
