@@ -1,5 +1,5 @@
 # Boxfish FLIR Cameras Library
-> This project allows the remote running of camera over an ethernet connection
+> This project allows the remote running of camera over an ethernet connection 
 
 
 ### Description
